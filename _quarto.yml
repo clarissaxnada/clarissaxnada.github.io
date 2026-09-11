@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "MDS 2026/27 First Week"
+  title: "Clarissa Nada Dahjan"
   navbar:
     left:
       - href: index.qmd
