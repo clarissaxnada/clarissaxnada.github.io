@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "Before joining the Masters of Data Science Program (2026-2027), I worked as a Data Analyst and Developer at DarkVision Technologies. My role involved data cleaning, measuring, analysis, manipulation and processing into various deliverables in forms of Excel, Word Documents, and plots. The main languages I interacted with during these two roles were Matlab and Python, and the occasional SQL code."
   },
   {
     "objectID": "index.html",
@@ -12,5 +12,26 @@
     "title": "Clarissa Nada Dahjan",
     "section": "",
     "text": "Hi readers! My name is Clarissa, I am originally from Indonesia and came to Vancouver in 2019 to do my Bachelor’s degree in Mathematics at UBC. After graduating in 2023, I worked as a Data Analyst and Developer at DarkVision Technologies for 3 years. I am now returning to UBC to join the Master’s of Data Science program (2026-2027), hoping to enhance my hard skills in data science and analysis to be more confident when returning to data-related roles."
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About",
+    "section": "",
+    "text": "Before joining the Masters of Data Science Program (2026-2027), I worked as a Data Analyst and Developer at DarkVision Technologies. My role involved data cleaning, measuring, analysis, manipulation and processing into various deliverables in forms of Excel, Word Documents, and plots. The main languages I interacted with during these two roles were Matlab and Python, and the occasional SQL code."
+  },
+  {
+    "objectID": "about.html#why-data-science",
+    "href": "about.html#why-data-science",
+    "title": "About",
+    "section": "Why Data Science",
+    "text": "Why Data Science\nIn the 3 years at DarkVision, I was focused on honing my practical skills on using various Python functionalities to manipulate and process data. Although practical skills are useful, I felt like I was lacking in the theoretical knowledge and the “why” in some design decisions the team made for certain initiatives. Returning back to school for Data Science felt like the right move to take a step back and revisit concepts that I may be familiar with applying, so that it is strengthened with the theories behind them."
+  },
+  {
+    "objectID": "about.html#outside-of-data-science",
+    "href": "about.html#outside-of-data-science",
+    "title": "About",
+    "section": "Outside of Data Science",
+    "text": "Outside of Data Science\nOutside of Data Science, I love music, photography, and nature. Some music genre’s I am a fan of include (but are not limited to) indie-folk, alternative-pop, and punk-pop music. I have a photography account on instagram with the user handle @cnada.jpg, where I share my photos of people and nature adventures!"
   }
 ]
