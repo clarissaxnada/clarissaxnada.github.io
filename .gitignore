@@ -1,2 +1,7 @@
+# Quarto files
 /.quarto/
+/_site/
 **/*.quarto_ipynb
+
+# Mac System files
+.DS_Store
