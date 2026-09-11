@@ -7,6 +7,7 @@ date: 2026-09-11
 ![First Day of Classes.](first-day.jpeg){width=250px}
 
 MDS 2026 Cohort 11 began classes on Monday, August 31st 2026! Term 1 begins with 4 courses:
+
 1. DSCI 511 Programming for Data Science - Programming in Python
 2. DSCI 521 Computing Platforms for Data Science - Git, GitHub, and other Programming Tools
 3. DSCI 523 Programming for Data Manipulation - Programming in R
