@@ -3,3 +3,5 @@ title: "Palmer Penguins Analysis (with R)"
 author: "Clarissa Nada Dahjan"
 date: 2026-09-21
 ---
+
+![Palmer Penguins Analysis (with R)](penguins.jpg){width=250px}
