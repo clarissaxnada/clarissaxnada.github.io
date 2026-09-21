@@ -5,3 +5,70 @@ date: 2026-09-21
 ---
 
 ![Palmer Penguins Analysis (with R)](penguins.jpg){width=250px}
+
+## Introduction
+
+In this blog post, we will be investigating whether sex is associated with the size of penguins using R. We will use the `palmerpenguins` dataset and compare physical measurements between male and female penguins.
+
+We will answer this analysis question by examining the male-female ratios of penguin body mass, flipper length, bill length, and bill depth.
+
+## Setup
+
+Before proceeding, we will load the `tidyverse` package and the `palmerpenguins` package for the dataset.
+
+```{r}
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(palmerpenguins)
+```
+
+Additionally, we will clean the dataset to remove any NA values before processing to avoid ambiguity.
+
+```{r}
+#| message: false
+#| warning: false
+
+penguins_clean <- penguins |> drop_na(sex, body_mass_g, flipper_length_mm)
+```
+
+
+## Comparing Penguin Size by Sex
+
+Below, we are calculating the average physical measurements for male and female penguins.
+
+```{r}
+penguins_clean |>
+  group_by(sex) |>
+  summarise(
+    mean_body_mass = mean(body_mass_g, na.rm = TRUE),
+    mean_flipper_length = mean(flipper_length_mm, na.rm = TRUE),
+    mean_bill_length = mean(bill_length_mm, na.rm = TRUE),
+    mean_bill_depth = mean(bill_depth_mm, na.rm = TRUE)
+  )
+```
+
+The table allows us to compare the average measurements between male and female penguins. We can see that the values skew towards the male species of penguins.
+
+## Comparing Size Within Species
+
+Because different penguin species have different typical sizes, we can also compare males and females within each species.
+
+```{r}
+penguins_clean |>
+  group_by(species, sex) |>
+  summarise(
+    mean_body_mass = mean(body_mass_g, na.rm = TRUE),
+    mean_flipper_length = mean(flipper_length_mm, na.rm = TRUE),
+    .groups = "drop"
+  )
+```
+
+This table allows us to determine whether the differences between males and females are consistent across species. We, again, see that this skewing pattern towards males are still true when we analyze it by species.
+
+## Conclusion
+
+The tables allow us to compare the physical measurements of male and female penguins, both overall and within each species.
+
+If the average measurements are consistently larger for males, this provides evidence that sex is associated to some degree with penguin size in this dataset. Further statistical analysis could be used to determine whether the observed differences are statistically significant.

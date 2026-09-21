@@ -5,3 +5,4 @@ date: 2026-09-21
 ---
 
 ![Palmer Penguins Analysis (with Python)](penguins.jpg){width=250px}
+
