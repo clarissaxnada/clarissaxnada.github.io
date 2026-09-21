@@ -35,6 +35,41 @@
     "text": "Palmer Penguins Analysis (with R)"
   },
   {
+    "objectID": "posts/penguins-analysis-r/index.html#introduction",
+    "href": "posts/penguins-analysis-r/index.html#introduction",
+    "title": "Palmer Penguins Analysis (with R)",
+    "section": "Introduction",
+    "text": "Introduction\nIn this blog post, we will be investigating whether sex is associated with the size of penguins using R. We will use the palmerpenguins dataset and compare physical measurements between male and female penguins.\nWe will answer this analysis question by examining the male-female ratios of penguin body mass, flipper length, bill length, and bill depth."
+  },
+  {
+    "objectID": "posts/penguins-analysis-r/index.html#setup",
+    "href": "posts/penguins-analysis-r/index.html#setup",
+    "title": "Palmer Penguins Analysis (with R)",
+    "section": "Setup",
+    "text": "Setup\nBefore proceeding, we will load the tidyverse package and the palmerpenguins package for the dataset.\n\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\nAdditionally, we will clean the dataset to remove any NA values before processing to avoid ambiguity.\n\npenguins_clean &lt;- penguins |&gt; drop_na(sex, body_mass_g, flipper_length_mm)"
+  },
+  {
+    "objectID": "posts/penguins-analysis-r/index.html#comparing-penguin-size-by-sex",
+    "href": "posts/penguins-analysis-r/index.html#comparing-penguin-size-by-sex",
+    "title": "Palmer Penguins Analysis (with R)",
+    "section": "Comparing Penguin Size by Sex",
+    "text": "Comparing Penguin Size by Sex\nBelow, we are calculating the average physical measurements for male and female penguins.\n\n\n\nTable 1: Average physical measurements of penguins by sex.\n\n\npenguins_clean |&gt;\n  group_by(sex) |&gt;\n  summarise(\n    mean_body_mass = mean(body_mass_g, na.rm = TRUE),\n    mean_flipper_length = mean(flipper_length_mm, na.rm = TRUE),\n    mean_bill_length = mean(bill_length_mm, na.rm = TRUE),\n    mean_bill_depth = mean(bill_depth_mm, na.rm = TRUE)\n  )\n\n# A tibble: 2 × 5\n  sex    mean_body_mass mean_flipper_length mean_bill_length mean_bill_depth\n  &lt;fct&gt;           &lt;dbl&gt;               &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;\n1 female          3862.                197.             42.1            16.4\n2 male            4546.                205.             45.9            17.9\n\n\n\n\nThe table allows us to compare the average measurements between male and female penguins. We can see that the values skew towards the male species of penguins."
+  },
+  {
+    "objectID": "posts/penguins-analysis-r/index.html#comparing-size-within-species",
+    "href": "posts/penguins-analysis-r/index.html#comparing-size-within-species",
+    "title": "Palmer Penguins Analysis (with R)",
+    "section": "Comparing Size Within Species",
+    "text": "Comparing Size Within Species\nBecause different penguin species have different typical sizes, we can also compare males and females within each species.\n\n\n\nTable 2: Average physical measurements of penguins by sex and species.\n\n\npenguins_clean |&gt;\n  group_by(species, sex) |&gt;\n  summarise(\n    mean_body_mass = mean(body_mass_g, na.rm = TRUE),\n    mean_flipper_length = mean(flipper_length_mm, na.rm = TRUE),\n    .groups = \"drop\"\n  )\n\n# A tibble: 6 × 4\n  species   sex    mean_body_mass mean_flipper_length\n  &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;               &lt;dbl&gt;\n1 Adelie    female          3369.                188.\n2 Adelie    male            4043.                192.\n3 Chinstrap female          3527.                192.\n4 Chinstrap male            3939.                200.\n5 Gentoo    female          4680.                213.\n6 Gentoo    male            5485.                222.\n\n\n\n\nThis table allows us to determine whether the differences between males and females are consistent across species. We, again, see that this skewing pattern towards males are still true when we analyze it by species."
+  },
+  {
+    "objectID": "posts/penguins-analysis-r/index.html#conclusion",
+    "href": "posts/penguins-analysis-r/index.html#conclusion",
+    "title": "Palmer Penguins Analysis (with R)",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe tables allow us to compare the physical measurements of male and female penguins, both overall and within each species.\nIf the average measurements are consistently larger for males, this provides evidence that sex is associated to some degree with penguin size in this dataset. Further statistical analysis could be used to determine whether the observed differences are statistically significant."
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",

@@ -27,9 +27,6 @@ library(palmerpenguins)
 Additionally, we will clean the dataset to remove any NA values before processing to avoid ambiguity.
 
 ```{r}
-#| message: false
-#| warning: false
-
 penguins_clean <- penguins |> drop_na(sex, body_mass_g, flipper_length_mm)
 ```
 
@@ -39,6 +36,8 @@ penguins_clean <- penguins |> drop_na(sex, body_mass_g, flipper_length_mm)
 Below, we are calculating the average physical measurements for male and female penguins.
 
 ```{r}
+#| label: tbl-penguin-size
+#| tbl-cap: "Average physical measurements of penguins by sex."
 penguins_clean |>
   group_by(sex) |>
   summarise(
@@ -56,6 +55,8 @@ The table allows us to compare the average measurements between male and female 
 Because different penguin species have different typical sizes, we can also compare males and females within each species.
 
 ```{r}
+#| label: tbl-penguin-size-species
+#| tbl-cap: "Average physical measurements of penguins by sex and species."
 penguins_clean |>
   group_by(species, sex) |>
   summarise(
