@@ -10,7 +10,7 @@ date: 2026-09-21
 
 In this blog post, we will be investigating whether sex is associated with the size of penguins using R. We will use the `palmerpenguins` dataset and compare physical measurements between male and female penguins.
 
-We will answer this analysis question by examining the male-female ratios of penguin body mass, flipper length, bill length, and bill depth.
+We will answer this analysis question by examining the male-female ratios of penguin body mass, flipper length, bill length, and bill depth. We will be using the `palmerpenguins` data set: [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/), Palmer Station Antarctica LTER.
 
 ## Setup
 

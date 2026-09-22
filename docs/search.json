@@ -25,7 +25,7 @@
     "href": "posts/penguins-analysis-py/index.html#introduction",
     "title": "Palmer Penguins Analysis (with Python)",
     "section": "Introduction",
-    "text": "Introduction\nIn this blog post, we will be investigating whether sex is associated with the size of penguins using Python. We will use the palmerpenguins dataset and compare physical measurements between male and female penguins.\nWe will answer this analysis question by examining the male-female ratios of penguin body mass, flipper length, bill length, and bill depth."
+    "text": "Introduction\nIn this blog post, we will be investigating whether sex is associated with the size of penguins using Python. We will use the palmerpenguins dataset and compare physical measurements between male and female penguins.\nWe will answer this analysis question by examining the male-female ratios of penguin body mass, flipper length, bill length, and bill depth. We will be using the palmerpenguins data set: Palmer Penguins, Palmer Station Antarctica LTER."
   },
   {
     "objectID": "posts/penguins-analysis-py/index.html#setup",
@@ -74,7 +74,7 @@
     "href": "posts/penguins-analysis-r/index.html#introduction",
     "title": "Palmer Penguins Analysis (with R)",
     "section": "Introduction",
-    "text": "Introduction\nIn this blog post, we will be investigating whether sex is associated with the size of penguins using R. We will use the palmerpenguins dataset and compare physical measurements between male and female penguins.\nWe will answer this analysis question by examining the male-female ratios of penguin body mass, flipper length, bill length, and bill depth."
+    "text": "Introduction\nIn this blog post, we will be investigating whether sex is associated with the size of penguins using R. We will use the palmerpenguins dataset and compare physical measurements between male and female penguins.\nWe will answer this analysis question by examining the male-female ratios of penguin body mass, flipper length, bill length, and bill depth. We will be using the palmerpenguins data set: Palmer Penguins, Palmer Station Antarctica LTER."
   },
   {
     "objectID": "posts/penguins-analysis-r/index.html#setup",

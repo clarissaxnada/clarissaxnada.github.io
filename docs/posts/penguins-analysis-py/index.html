@@ -214,17 +214,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>In this blog post, we will be investigating whether sex is associated with the size of penguins using Python. We will use the <code>palmerpenguins</code> dataset and compare physical measurements between male and female penguins.</p>
-<p>We will answer this analysis question by examining the male-female ratios of penguin body mass, flipper length, bill length, and bill depth.</p>
+<p>We will answer this analysis question by examining the male-female ratios of penguin body mass, flipper length, bill length, and bill depth. We will be using the <code>palmerpenguins</code> data set: <a href="https://allisonhorst.github.io/palmerpenguins/">Palmer Penguins</a>, Palmer Station Antarctica LTER.</p>
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <p>Before proceeding, we will load the <code>pandas</code> package and the <code>palmerpenguins</code> package for the dataset.</p>
-<div id="78acbd26" class="cell" data-message="false" data-execution_count="1">
+<div id="c2b6053c" class="cell" data-message="false" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Additionally, we will clean the dataset to remove any NA values before processing to avoid ambiguity.</p>
-<div id="d62c44df" class="cell" data-execution_count="2">
+<div id="4f4ffe60" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> load_penguins()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>penguins_clean <span class="op">=</span> penguins.dropna(subset<span class="op">=</span>[<span class="st">"sex"</span>, <span class="st">"body_mass_g"</span>, <span class="st">"flipper_length_mm"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
