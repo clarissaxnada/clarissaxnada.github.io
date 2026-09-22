@@ -21,6 +21,41 @@
     "text": "Palmer Penguins Analysis (with Python)"
   },
   {
+    "objectID": "posts/penguins-analysis-py/index.html#introduction",
+    "href": "posts/penguins-analysis-py/index.html#introduction",
+    "title": "Palmer Penguins Analysis (with Python)",
+    "section": "Introduction",
+    "text": "Introduction\nIn this blog post, we will be investigating whether sex is associated with the size of penguins using Python. We will use the palmerpenguins dataset and compare physical measurements between male and female penguins.\nWe will answer this analysis question by examining the male-female ratios of penguin body mass, flipper length, bill length, and bill depth."
+  },
+  {
+    "objectID": "posts/penguins-analysis-py/index.html#setup",
+    "href": "posts/penguins-analysis-py/index.html#setup",
+    "title": "Palmer Penguins Analysis (with Python)",
+    "section": "Setup",
+    "text": "Setup\nBefore proceeding, we will load the pandas package and the palmerpenguins package for the dataset.\n\nimport pandas as pd\nfrom palmerpenguins import load_penguins\n\nAdditionally, we will clean the dataset to remove any NA values before processing to avoid ambiguity.\n\npenguins = load_penguins()\npenguins_clean = penguins.dropna(subset=[\"sex\", \"body_mass_g\", \"flipper_length_mm\"])"
+  },
+  {
+    "objectID": "posts/penguins-analysis-py/index.html#comparing-penguin-size-by-sex",
+    "href": "posts/penguins-analysis-py/index.html#comparing-penguin-size-by-sex",
+    "title": "Palmer Penguins Analysis (with Python)",
+    "section": "Comparing Penguin Size by Sex",
+    "text": "Comparing Penguin Size by Sex\nBelow, we are calculating the average physical measurements for male and female penguins.\n\npenguins_clean.groupby(\"sex\").agg(\n    mean_body_mass=(\"body_mass_g\", \"mean\"),\n    mean_flipper_length=(\"flipper_length_mm\", \"mean\"),\n    mean_bill_length=(\"bill_length_mm\", \"mean\"),\n    mean_bill_depth=(\"bill_depth_mm\", \"mean\")\n).reset_index()\n\n\n\nTable 1: Average physical measurements of penguins by sex.\n\n\n\n\n\n\n\n\n\n\nsex\nmean_body_mass\nmean_flipper_length\nmean_bill_length\nmean_bill_depth\n\n\n\n\n0\nfemale\n3862.272727\n197.363636\n42.096970\n16.425455\n\n\n1\nmale\n4545.684524\n204.505952\n45.854762\n17.891071\n\n\n\n\n\n\n\n\n\n\nThe table allows us to compare the average measurements between male and female penguins. We can see that the values skew towards the male species of penguins."
+  },
+  {
+    "objectID": "posts/penguins-analysis-py/index.html#comparing-size-within-species",
+    "href": "posts/penguins-analysis-py/index.html#comparing-size-within-species",
+    "title": "Palmer Penguins Analysis (with Python)",
+    "section": "Comparing Size Within Species",
+    "text": "Comparing Size Within Species\nBecause different penguin species have different typical sizes, we can also compare males and females within each species.\n\npenguins_clean.groupby([\"species\", \"sex\"]).agg(\n    mean_body_mass=(\"body_mass_g\", \"mean\"),\n    mean_flipper_length=(\"flipper_length_mm\", \"mean\")\n).reset_index()\n\n\n\nTable 2: Average physical measurements of penguins by sex and species.\n\n\n\n\n\n\n\n\n\n\nspecies\nsex\nmean_body_mass\nmean_flipper_length\n\n\n\n\n0\nAdelie\nfemale\n3368.835616\n187.794521\n\n\n1\nAdelie\nmale\n4043.493151\n192.410959\n\n\n2\nChinstrap\nfemale\n3527.205882\n191.735294\n\n\n3\nChinstrap\nmale\n3938.970588\n199.911765\n\n\n4\nGentoo\nfemale\n4679.741379\n212.706897\n\n\n5\nGentoo\nmale\n5484.836066\n221.540984\n\n\n\n\n\n\n\n\n\n\nThis table allows us to determine whether the differences between males and females are consistent across species. We, again, see that this skewing pattern towards males are still true when we analyze it by species."
+  },
+  {
+    "objectID": "posts/penguins-analysis-py/index.html#conclusion",
+    "href": "posts/penguins-analysis-py/index.html#conclusion",
+    "title": "Palmer Penguins Analysis (with Python)",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe tables allow us to compare the physical measurements of male and female penguins, both overall and within each species.\nIf the average measurements are consistently larger for males, this provides evidence that sex is associated to some degree with penguin size in this dataset. Further statistical analysis could be used to determine whether the observed differences are statistically significant."
+  },
+  {
     "objectID": "posts/first-weeks/index.html",
     "href": "posts/first-weeks/index.html",
     "title": "My first weeks in MDS",
