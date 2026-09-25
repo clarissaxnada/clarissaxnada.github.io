@@ -68,6 +68,35 @@ penguins_clean |>
 
 This table allows us to determine whether the differences between males and females are consistent across species. We, again, see that this skewing pattern towards males are still true when we analyze it by species.
 
+## Visualizing Penguin Size by Sex
+
+To visualize the differences in physical measurements between male and female penguins, we will use box plots to show the distribution of each measurement, and to compare both the typical values and the variability between sexes.
+
+```{r}
+#| label: fig-penguin-size
+#| fig-cap: "Distribution of penguin physical measurements by sex."
+
+penguins_clean |>
+  select(sex, body_mass_g, flipper_length_mm, bill_length_mm, bill_depth_mm) |>
+  pivot_longer(
+    cols = -sex,
+    names_to = "measurement",
+    values_to = "value"
+  ) |>
+  ggplot(aes(x = sex, y = value, fill = sex)) +
+  geom_boxplot(show.legend = FALSE) +
+  facet_wrap(~ measurement, scales = "free_y") +
+  labs(
+    x = "Sex",
+    y = "Measurement",
+    title = "Penguin Physical Measurements by Sex"
+  ) +
+  theme_minimal()
+```
+
+Across the measurements, male penguins generally have higher values than female penguins, although the amount of overlap varies by measurement.
+
+
 ## Conclusion
 
 The tables allow us to compare the physical measurements of male and female penguins, both overall and within each species.

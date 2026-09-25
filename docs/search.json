@@ -32,7 +32,7 @@
     "href": "posts/penguins-analysis-py/index.html#setup",
     "title": "Palmer Penguins Analysis (with Python)",
     "section": "Setup",
-    "text": "Setup\nBefore proceeding, we will load the pandas package and the palmerpenguins package for the dataset.\n\nimport pandas as pd\nfrom palmerpenguins import load_penguins\n\nAdditionally, we will clean the dataset to remove any NA values before processing to avoid ambiguity.\n\npenguins = load_penguins()\npenguins_clean = penguins.dropna(subset=[\"sex\", \"body_mass_g\", \"flipper_length_mm\"])"
+    "text": "Setup\nBefore proceeding, we will load the pandas package and the palmerpenguins package for the dataset. We will also load the seaborn and matplotlib packages for the visualization section.\n\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfrom palmerpenguins import load_penguins\n\nAdditionally, we will clean the dataset to remove any NA values before processing to avoid ambiguity.\n\npenguins = load_penguins()\npenguins_clean = penguins.dropna(subset=[\"sex\", \"body_mass_g\", \"flipper_length_mm\"])"
   },
   {
     "objectID": "posts/penguins-analysis-py/index.html#comparing-penguin-size-by-sex",
@@ -47,6 +47,13 @@
     "title": "Palmer Penguins Analysis (with Python)",
     "section": "Comparing Size Within Species",
     "text": "Comparing Size Within Species\nBecause different penguin species have different typical sizes, we can also compare males and females within each species.\n\npenguins_clean.groupby([\"species\", \"sex\"]).agg(\n    mean_body_mass=(\"body_mass_g\", \"mean\"),\n    mean_flipper_length=(\"flipper_length_mm\", \"mean\")\n).reset_index()\n\n\n\nTable 2: Average physical measurements of penguins by sex and species.\n\n\n\n\n\n\n\n\n\n\nspecies\nsex\nmean_body_mass\nmean_flipper_length\n\n\n\n\n0\nAdelie\nfemale\n3368.835616\n187.794521\n\n\n1\nAdelie\nmale\n4043.493151\n192.410959\n\n\n2\nChinstrap\nfemale\n3527.205882\n191.735294\n\n\n3\nChinstrap\nmale\n3938.970588\n199.911765\n\n\n4\nGentoo\nfemale\n4679.741379\n212.706897\n\n\n5\nGentoo\nmale\n5484.836066\n221.540984\n\n\n\n\n\n\n\n\n\n\nThis table allows us to determine whether the differences between males and females are consistent across species. We, again, see that this skewing pattern towards males are still true when we analyze it by species."
+  },
+  {
+    "objectID": "posts/penguins-analysis-py/index.html#visualizing-penguin-size-by-sex",
+    "href": "posts/penguins-analysis-py/index.html#visualizing-penguin-size-by-sex",
+    "title": "Palmer Penguins Analysis (with Python)",
+    "section": "Visualizing Penguin Size by Sex",
+    "text": "Visualizing Penguin Size by Sex\nTo visualize the differences in physical measurements between male and female penguins, we will use box plots to show the distribution of each measurement, and to compare both the typical values and the variability between sexes.\n\npenguins_clean = penguins.dropna(\n    subset=[\"sex\", \"body_mass_g\", \"flipper_length_mm\"]\n)\n\nmeasurements = [\n    \"body_mass_g\",\n    \"flipper_length_mm\",\n    \"bill_length_mm\",\n    \"bill_depth_mm\",\n]\n\npenguins_long = penguins_clean.melt(\n    id_vars=\"sex\",\n    value_vars=measurements,\n    var_name=\"measurement\",\n    value_name=\"value\",\n)\n\ng = sns.catplot(\n    data=penguins_long,\n    x=\"sex\",\n    y=\"value\",\n    col=\"measurement\",\n    kind=\"box\",\n    col_wrap=2,\n    sharey=False,\n    height=4,\n    aspect=1.2,\n)\n\ng.set_axis_labels(\"Sex\", \"Measurement\")\ng.set_titles(\"{col_name}\")\ng.fig.suptitle(\"Penguin Physical Measurements by Sex\", y=1.02)\n\nplt.show()\n\n\n\n\n\n\n\nFigure 1: Distribution of penguin physical measurements by sex.\n\n\n\n\n\nAcross the measurements, male penguins generally have higher values than female penguins, although the amount of overlap varies by measurement."
   },
   {
     "objectID": "posts/penguins-analysis-py/index.html#conclusion",
@@ -96,6 +103,13 @@
     "title": "Palmer Penguins Analysis (with R)",
     "section": "Comparing Size Within Species",
     "text": "Comparing Size Within Species\nBecause different penguin species have different typical sizes, we can also compare males and females within each species.\n\n\n\nTable 2: Average physical measurements of penguins by sex and species.\n\n\npenguins_clean |&gt;\n  group_by(species, sex) |&gt;\n  summarise(\n    mean_body_mass = mean(body_mass_g, na.rm = TRUE),\n    mean_flipper_length = mean(flipper_length_mm, na.rm = TRUE),\n    .groups = \"drop\"\n  )\n\n# A tibble: 6 × 4\n  species   sex    mean_body_mass mean_flipper_length\n  &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;               &lt;dbl&gt;\n1 Adelie    female          3369.                188.\n2 Adelie    male            4043.                192.\n3 Chinstrap female          3527.                192.\n4 Chinstrap male            3939.                200.\n5 Gentoo    female          4680.                213.\n6 Gentoo    male            5485.                222.\n\n\n\n\nThis table allows us to determine whether the differences between males and females are consistent across species. We, again, see that this skewing pattern towards males are still true when we analyze it by species."
+  },
+  {
+    "objectID": "posts/penguins-analysis-r/index.html#visualizing-penguin-size-by-sex",
+    "href": "posts/penguins-analysis-r/index.html#visualizing-penguin-size-by-sex",
+    "title": "Palmer Penguins Analysis (with R)",
+    "section": "Visualizing Penguin Size by Sex",
+    "text": "Visualizing Penguin Size by Sex\nTo visualize the differences in physical measurements between male and female penguins, we will use box plots to show the distribution of each measurement, and to compare both the typical values and the variability between sexes.\n\npenguins_clean |&gt;\n  select(sex, body_mass_g, flipper_length_mm, bill_length_mm, bill_depth_mm) |&gt;\n  pivot_longer(\n    cols = -sex,\n    names_to = \"measurement\",\n    values_to = \"value\"\n  ) |&gt;\n  ggplot(aes(x = sex, y = value, fill = sex)) +\n  geom_boxplot(show.legend = FALSE) +\n  facet_wrap(~ measurement, scales = \"free_y\") +\n  labs(\n    x = \"Sex\",\n    y = \"Measurement\",\n    title = \"Penguin Physical Measurements by Sex\"\n  ) +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 1: Distribution of penguin physical measurements by sex.\n\n\n\n\n\nAcross the measurements, male penguins generally have higher values than female penguins, although the amount of overlap varies by measurement."
   },
   {
     "objectID": "posts/penguins-analysis-r/index.html#conclusion",

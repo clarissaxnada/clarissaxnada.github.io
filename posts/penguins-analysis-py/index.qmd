@@ -14,13 +14,15 @@ We will answer this analysis question by examining the male-female ratios of pen
 
 ## Setup
 
-Before proceeding, we will load the `pandas` package and the `palmerpenguins` package for the dataset.
+Before proceeding, we will load the `pandas` package and the `palmerpenguins` package for the dataset. We will also load the `seaborn` and `matplotlib` packages for the visualization section.
 
 ```{python}
 #| message: false
 #| warning: false
 
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 from palmerpenguins import load_penguins
 ```
 
@@ -64,6 +66,52 @@ penguins_clean.groupby(["species", "sex"]).agg(
 ```
 
 This table allows us to determine whether the differences between males and females are consistent across species. We, again, see that this skewing pattern towards males are still true when we analyze it by species.
+
+## Visualizing Penguin Size by Sex
+
+To visualize the differences in physical measurements between male and female penguins, we will use box plots to show the distribution of each measurement, and to compare both the typical values and the variability between sexes.
+
+```{python}
+#| label: fig-penguin-size
+#| fig-cap: "Distribution of penguin physical measurements by sex."
+penguins_clean = penguins.dropna(
+    subset=["sex", "body_mass_g", "flipper_length_mm"]
+)
+
+measurements = [
+    "body_mass_g",
+    "flipper_length_mm",
+    "bill_length_mm",
+    "bill_depth_mm",
+]
+
+penguins_long = penguins_clean.melt(
+    id_vars="sex",
+    value_vars=measurements,
+    var_name="measurement",
+    value_name="value",
+)
+
+g = sns.catplot(
+    data=penguins_long,
+    x="sex",
+    y="value",
+    col="measurement",
+    kind="box",
+    col_wrap=2,
+    sharey=False,
+    height=4,
+    aspect=1.2,
+)
+
+g.set_axis_labels("Sex", "Measurement")
+g.set_titles("{col_name}")
+g.fig.suptitle("Penguin Physical Measurements by Sex", y=1.02)
+
+plt.show()
+```
+
+Across the measurements, male penguins generally have higher values than female penguins, although the amount of overlap varies by measurement.
 
 ## Conclusion
 
